@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - claude/multilingual-learning-platform-011CUuvCxizQ7Eqd8k38s79M
+      - main
   workflow_dispatch:
 
 permissions:
