@@ -11,6 +11,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
 
   const navItems = [
     { id: 'home', label: t('nav.home') },
+    { id: 'ersteSchritte', label: t('nav.ersteSchritte') },
     { id: 'lessons', label: t('nav.lessons') },
     { id: 'vocabulary', label: t('nav.vocabulary') },
     { id: 'grammar', label: t('nav.grammar') },
@@ -21,9 +22,12 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
     <header className="bg-white dark:bg-gray-800 shadow-md">
       <div className="container mx-auto px-4 py-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div className="flex items-center gap-3">
+          <button
+            onClick={() => onNavigate('home')}
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+          >
             <div className="text-3xl">📚</div>
-            <div>
+            <div className="text-left">
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {t('app.title')}
               </h1>
@@ -31,7 +35,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
                 {t('app.subtitle')}
               </p>
             </div>
-          </div>
+          </button>
           <LanguageSwitcher />
         </div>
         <nav className="mt-4">

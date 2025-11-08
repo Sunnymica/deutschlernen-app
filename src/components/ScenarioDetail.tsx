@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Scenario } from '../types';
+import Breadcrumbs from './Breadcrumbs';
 
 interface ScenarioDetailProps {
   scenario: Scenario;
@@ -84,13 +85,22 @@ export default function ScenarioDetail({ scenario, onBack, onComplete }: Scenari
 
   return (
     <div className="max-w-5xl mx-auto">
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { label: t('nav.home'), onClick: onBack },
+          { label: t('ersteSchritte.title'), onClick: onBack },
+          { label: scenario.title }
+        ]}
+      />
+
       {/* Header */}
       <div className="mb-6">
         <button
           onClick={onBack}
           className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline mb-4"
         >
-          ← {t('common.back')}
+          ← Zurück zur Übersicht
         </button>
         <div className="flex items-start gap-4">
           <div className="text-6xl">{scenario.icon}</div>
@@ -108,20 +118,26 @@ export default function ScenarioDetail({ scenario, onBack, onComplete }: Scenari
 
       {/* Cultural Tips (if available) */}
       {scenario.culturalTips && scenario.culturalTips.length > 0 && (
-        <div className="bg-yellow-50 dark:bg-yellow-900 border-2 border-yellow-300 dark:border-yellow-700 rounded-xl p-4 mb-6">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-            💡 Kulturelle Tipps
+        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900 dark:to-yellow-900 border-2 border-amber-300 dark:border-amber-600 rounded-xl p-6 mb-6 shadow-md">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+            <span className="text-3xl">💡</span>
+            <span>Kulturelle Tipps</span>
           </h3>
-          <div className="grid md:grid-cols-2 gap-3">
+          <div className="grid md:grid-cols-2 gap-4">
             {scenario.culturalTips.map((tip) => (
-              <div key={tip.id} className="bg-white dark:bg-gray-800 p-3 rounded-lg">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-2xl">{tip.icon}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white text-sm">
+              <div
+                key={tip.id}
+                className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-all border-l-4 border-amber-500 hover:border-amber-600"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-3xl">{tip.icon}</span>
+                  <span className="font-bold text-gray-900 dark:text-white text-base">
                     {tip.title}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{tip.content}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed ml-12">
+                  {tip.content}
+                </p>
               </div>
             ))}
           </div>
@@ -203,29 +219,55 @@ export default function ScenarioDetail({ scenario, onBack, onComplete }: Scenari
               </button>
             </div>
 
-            <div className="space-y-4">
-              {scenario.dialogues.map((dialogue) => (
-                <div
-                  key={dialogue.id}
-                  className={`p-4 rounded-lg ${
-                    dialogue.speaker === 'Maria' || dialogue.speaker === 'Sie'
-                      ? 'bg-blue-50 dark:bg-blue-900 ml-8'
-                      : 'bg-gray-50 dark:bg-gray-900 mr-8'
-                  }`}
-                >
-                  <div className="font-semibold text-sm text-gray-700 dark:text-gray-300 mb-1">
-                    {dialogue.speaker}:
-                  </div>
-                  <div className="text-lg text-gray-900 dark:text-white mb-1">
-                    {dialogue.text}
-                  </div>
-                  {showTranslations && dialogue.translation && (
-                    <div className="text-sm text-gray-600 dark:text-gray-400 italic">
-                      → {dialogue.translation}
+            <div className="space-y-3 bg-gray-100 dark:bg-gray-900 p-4 rounded-xl">
+              {scenario.dialogues.map((dialogue) => {
+                // Determine if this is the user or another person
+                const isUser = dialogue.speaker === 'Maria' || dialogue.speaker === 'Sie' ||
+                               dialogue.speaker === 'Andriy' || dialogue.speaker === 'Olena';
+
+                // Get emoji for speaker
+                let speakerEmoji = '👤';
+                if (dialogue.speaker.includes('Sachbearbeiter') || dialogue.speaker.includes('Mitarbeiter')) {
+                  speakerEmoji = scenario.id === 'jobcenter' ? '🏢' : scenario.id === 'sprachschule' ? '🏫' : '🏛️';
+                }
+
+                return (
+                  <div
+                    key={dialogue.id}
+                    className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div className={`max-w-[80%] ${isUser ? 'order-2' : 'order-1'}`}>
+                      <div className="flex items-center gap-2 mb-1">
+                        {!isUser && <span className="text-xl">{speakerEmoji}</span>}
+                        <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">
+                          {dialogue.speaker}
+                        </span>
+                        {isUser && <span className="text-xl">👤</span>}
+                      </div>
+                      <div
+                        className={`p-4 rounded-2xl ${
+                          isUser
+                            ? 'bg-blue-500 text-white rounded-tr-sm'
+                            : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-tl-sm shadow-sm'
+                        }`}
+                      >
+                        <div className="text-base leading-relaxed">
+                          {dialogue.text}
+                        </div>
+                        {showTranslations && dialogue.translation && (
+                          <div className={`text-sm mt-2 pt-2 border-t ${
+                            isUser
+                              ? 'border-blue-400 text-blue-100'
+                              : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400'
+                          } italic`}>
+                            → {dialogue.translation}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
@@ -240,18 +282,44 @@ export default function ScenarioDetail({ scenario, onBack, onComplete }: Scenari
               {scenario.vocabulary.map((vocab, index) => (
                 <div
                   key={index}
-                  className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border-l-4 border-blue-600"
+                  className="p-5 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1"
                 >
-                  <div className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                    {vocab.german}
+                  <div className="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start gap-2">
+                    <span>🇩🇪</span>
+                    <span>{vocab.german}</span>
                   </div>
-                  <div className="text-blue-600 dark:text-blue-400 mb-2">
-                    {vocab.translation}
-                    {vocab.translationUK && ` • ${vocab.translationUK}`}
-                    {vocab.translationHR && ` • ${vocab.translationHR}`}
+
+                  <div className="space-y-2 ml-7">
+                    <div className="flex items-start gap-2 text-sm">
+                      <span>🇬🇧</span>
+                      <span className="text-blue-600 dark:text-blue-400 font-medium">
+                        {vocab.translation}
+                      </span>
+                    </div>
+
+                    {vocab.translationUK && (
+                      <div className="flex items-start gap-2 text-sm">
+                        <span>🇺🇦</span>
+                        <span className="text-yellow-600 dark:text-yellow-400 font-medium">
+                          {vocab.translationUK}
+                        </span>
+                      </div>
+                    )}
+
+                    {vocab.translationHR && (
+                      <div className="flex items-start gap-2 text-sm">
+                        <span>🇭🇷</span>
+                        <span className="text-red-600 dark:text-red-400 font-medium">
+                          {vocab.translationHR}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 italic">
-                    "{vocab.context}"
+
+                  <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 italic">
+                      💭 "{vocab.context}"
+                    </div>
                   </div>
                 </div>
               ))}
@@ -452,9 +520,17 @@ export default function ScenarioDetail({ scenario, onBack, onComplete }: Scenari
         {/* Checklist Tab */}
         {activeTab === 'checklist' && scenario.checklist && checklistByCategory && (
           <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-              ✅ Checkliste zum Ausdrucken
-            </h3>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                ✅ Checkliste zum Ausdrucken
+              </h3>
+              <button
+                onClick={() => window.print()}
+                className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
+              >
+                🖨️ Drucken
+              </button>
+            </div>
             <div className="space-y-6">
               {Object.entries(checklistByCategory).map(([category, items]) => (
                 <div key={category}>
