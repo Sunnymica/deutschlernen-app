@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "Učite njemački",
+    "subtitle": "Višejezična platforma za učenje"
+  },
+  "nav": {
+    "home": "Početna",
+    "lessons": "Lekcije",
+    "vocabulary": "Vokabular",
+    "grammar": "Gramatika",
+    "progress": "Napredak"
+  },
+  "home": {
+    "welcome": "Dobrodošli na platformu za učenje njemačkog jezika!",
+    "description": "Učite njemački pomoću interaktivnih lekcija, vježbanja vokabulara i gramatičkih vježbi.",
+    "getStarted": "Počni",
+    "features": {
+      "title": "Naše značajke",
+      "interactive": "Interaktivne lekcije",
+      "vocabulary": "Sveobuhvatno vježbanje vokabulara",
+      "grammar": "Strukturirane gramatičke vježbe",
+      "progress": "Praćenje napretka"
+    }
+  },
+  "lessons": {
+    "title": "Lekcije",
+    "selectLesson": "Odaberite lekciju",
+    "level": "Razina",
+    "beginner": "Početnik",
+    "intermediate": "Srednji",
+    "advanced": "Napredni",
+    "start": "Započni lekciju",
+    "continue": "Nastavi",
+    "completed": "Završeno"
+  },
+  "vocabulary": {
+    "title": "Vježbanje vokabulara",
+    "learn": "Uči riječi",
+    "practice": "Vježbaj",
+    "mastered": "Usvojeno",
+    "learning": "Učenje",
+    "showAnswer": "Prikaži odgovor",
+    "nextCard": "Sljedeća kartica",
+    "know": "Znam",
+    "dontKnow": "Ne znam"
+  },
+  "grammar": {
+    "title": "Gramatika",
+    "topics": "Gramatičke teme",
+    "exercises": "Vježbe",
+    "explanation": "Objašnjenje",
+    "practice": "Vježbaj",
+    "checkAnswer": "Provjeri odgovor",
+    "correct": "Točno!",
+    "incorrect": "Netočno. Pokušaj ponovo."
+  },
+  "progress": {
+    "title": "Vaš napredak",
+    "lessonsCompleted": "Završene lekcije",
+    "vocabularyMastered": "Usvojeni vokabular",
+    "grammarTopics": "Gramatičke teme",
+    "overallProgress": "Ukupni napredak",
+    "keepGoing": "Nastavi tako!"
+  },
+  "common": {
+    "next": "Dalje",
+    "back": "Natrag",
+    "submit": "Pošalji",
+    "cancel": "Otkaži",
+    "save": "Spremi",
+    "loading": "Učitavanje...",
+    "language": "Jezik"
+  }
+}

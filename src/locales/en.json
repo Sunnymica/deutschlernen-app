@@ -1,0 +1,134 @@
+{
+  "app": {
+    "title": "Learn German",
+    "subtitle": "Multilingual Learning Platform"
+  },
+  "nav": {
+    "home": "Home",
+    "ersteSchritte": "First Steps",
+    "lessons": "Lessons",
+    "vocabulary": "Vocabulary",
+    "grammar": "Grammar",
+    "progress": "Progress"
+  },
+  "home": {
+    "welcome": "Welcome to the German Learning Platform!",
+    "description": "Learn German with interactive lessons, vocabulary training, and grammar exercises.",
+    "getStarted": "Get Started",
+    "features": {
+      "title": "Our Features",
+      "interactive": "Interactive Lessons",
+      "vocabulary": "Comprehensive Vocabulary Training",
+      "grammar": "Structured Grammar Exercises",
+      "progress": "Progress Tracking"
+    }
+  },
+  "lessons": {
+    "title": "Lessons",
+    "selectLesson": "Select a Lesson",
+    "level": "Level",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "start": "Start Lesson",
+    "continue": "Continue",
+    "completed": "Completed"
+  },
+  "vocabulary": {
+    "title": "Vocabulary Training",
+    "learn": "Learn Vocabulary",
+    "practice": "Practice",
+    "mastered": "Mastered",
+    "learning": "Learning",
+    "showAnswer": "Show Answer",
+    "nextCard": "Next Card",
+    "know": "I Know",
+    "dontKnow": "Don't Know"
+  },
+  "grammar": {
+    "title": "Grammar",
+    "topics": "Grammar Topics",
+    "exercises": "Exercises",
+    "explanation": "Explanation",
+    "practice": "Practice",
+    "checkAnswer": "Check Answer",
+    "correct": "Correct!",
+    "incorrect": "Not correct. Try again."
+  },
+  "progress": {
+    "title": "Your Progress",
+    "lessonsCompleted": "Lessons Completed",
+    "vocabularyMastered": "Vocabulary Mastered",
+    "grammarTopics": "Grammar Topics",
+    "overallProgress": "Overall Progress",
+    "keepGoing": "Keep Going!"
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading...",
+    "language": "Language"
+  },
+  "onboarding": {
+    "step": "Step",
+    "welcome": "Welcome!",
+    "welcomeDescription": "Personalize your learning experience",
+    "yourName": "Your Name",
+    "optional": "Optional",
+    "namePlaceholder": "e.g. Maria",
+    "chooseProfession": "Choose Your Profession",
+    "professionDescription": "We'll adapt learning content to your field",
+    "chooseLifeSituation": "Your Life Situation",
+    "lifeSituationDescription": "Select all that apply",
+    "getStarted": "Get Started"
+  },
+  "professions": {
+    "handwerk": "Crafts",
+    "finanzen": "Finance",
+    "logistik": "Logistics",
+    "pflege": "Care",
+    "medizin": "Medicine",
+    "gastronomie": "Gastronomy",
+    "it": "IT",
+    "einzelhandel": "Retail",
+    "bildung": "Education",
+    "technik": "Engineering"
+  },
+  "lifeSituations": {
+    "neu-in-deutschland": "New in Germany",
+    "mit-kindern": "With Children",
+    "jobsuche": "Job Search",
+    "studium": "University",
+    "ausbildung": "Apprenticeship",
+    "rentenalter": "Retirement"
+  },
+  "ersteSchritte": {
+    "title": "First Steps in Germany",
+    "description": "Practical everyday situations for newcomers - Level A1",
+    "dialogues": "Dialogues",
+    "words": "Words",
+    "exercises": "Exercises",
+    "start": "Start",
+    "review": "Review",
+    "dialogue": "Dialogue",
+    "vocabulary": "Vocabulary",
+    "practice": "Practice",
+    "dialogueTitle": "Example Dialogue",
+    "showTranslations": "Show Translations",
+    "hideTranslations": "Hide Translations",
+    "vocabularyTitle": "Important Words & Phrases",
+    "practiceTitle": "Exercises",
+    "yourAnswer": "Your answer...",
+    "correctAnswer": "Correct answer",
+    "finish": "Finish",
+    "tips": {
+      "title": "Tips for Success",
+      "tip1": "Practice each dialogue out loud several times",
+      "tip2": "Write down new words in a vocabulary notebook",
+      "tip3": "Try to use the situations in everyday life"
+    }
+  }
+}
