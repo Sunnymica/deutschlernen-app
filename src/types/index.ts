@@ -79,6 +79,9 @@ export interface Scenario {
   vocabulary: ScenarioVocabulary[];
   exercises: ScenarioExercise[];
   completed: boolean;
+  culturalTips?: CulturalTip[];
+  checklist?: ChecklistItem[];
+  rolePlay?: RolePlayQuestion[];
 }
 
 export interface Dialogue {
@@ -93,13 +96,36 @@ export interface ScenarioVocabulary {
   german: string;
   translation: string;
   context: string;
+  translationUK?: string;
+  translationHR?: string;
 }
 
 export interface ScenarioExercise {
   id: string;
-  type: 'dialogue-completion' | 'role-play' | 'vocabulary-match' | 'situation-response';
+  type: 'dialogue-completion' | 'role-play' | 'vocabulary-match' | 'situation-response' | 'fill-in-blank' | 'multiple-choice';
   question: string;
   options?: string[];
   correctAnswer: string;
   hint?: string;
+  blanks?: string[]; // for fill-in-blank exercises
+}
+
+export interface CulturalTip {
+  id: string;
+  icon: string;
+  title: string;
+  content: string;
+}
+
+export interface ChecklistItem {
+  id: string;
+  category: string;
+  text: string;
+  checked?: boolean;
+}
+
+export interface RolePlayQuestion {
+  id: string;
+  prompt: string;
+  expectedAnswer?: string;
 }

@@ -2,6 +2,197 @@ import { Scenario } from '../types';
 
 export const ersteSchritteScenarios: Scenario[] = [
   {
+    id: 'auslaenderbehoerde',
+    title: 'Ausländerbehörde',
+    category: 'erste-schritte',
+    level: 'A1',
+    description: 'Aufenthaltstitel beantragen und verlängern',
+    icon: '🏛️',
+    completed: false,
+    dialogues: [
+      { id: '1', speaker: 'Maria', text: 'Guten Tag.', translation: 'Good day.' },
+      { id: '2', speaker: 'Sachbearbeiter', text: 'Guten Tag. Wie kann ich Ihnen helfen?', translation: 'Good day. How can I help you?' },
+      { id: '3', speaker: 'Maria', text: 'Mein Name ist Maria Kovalenko. Ich habe einen Termin um 10 Uhr.', translation: 'My name is Maria Kovalenko. I have an appointment at 10 o\'clock.' },
+      { id: '4', speaker: 'Sachbearbeiter', text: 'Moment bitte... Ja, hier ist Ihr Termin. Haben Sie Ihre Unterlagen dabei?', translation: 'One moment please... Yes, here is your appointment. Do you have your documents with you?' },
+      { id: '5', speaker: 'Maria', text: 'Ja. Hier sind meine Papiere. Mein Pass und meine Bescheinigung.', translation: 'Yes. Here are my papers. My passport and my certificate.' },
+      { id: '6', speaker: 'Sachbearbeiter', text: 'Danke. Ich sehe, Sie kommen aus der Ukraine. Wann sind Sie nach Deutschland gekommen?', translation: 'Thank you. I see you come from Ukraine. When did you come to Germany?' },
+      { id: '7', speaker: 'Maria', text: 'Im März 2022. Können Sie langsam sprechen? Ich spreche wenig Deutsch.', translation: 'In March 2022. Can you speak slowly? I speak little German.' },
+      { id: '8', speaker: 'Sachbearbeiter', text: 'Kein Problem. Ich spreche langsam. Sie brauchen einen Aufenthaltstitel, richtig?', translation: 'No problem. I speak slowly. You need a residence permit, correct?' },
+      { id: '9', speaker: 'Maria', text: 'Ja, genau. Was muss ich machen?', translation: 'Yes, exactly. What must I do?' },
+      { id: '10', speaker: 'Sachbearbeiter', text: 'Sie müssen dieses Formular ausfüllen. Haben Sie biometrische Fotos?', translation: 'You must fill out this form. Do you have biometric photos?' },
+      { id: '11', speaker: 'Maria', text: 'Ja, hier. Ich habe auch eine Frage: Ich habe nur ein Handy mit ukrainischer Nummer. Ist das ein Problem?', translation: 'Yes, here. I also have a question: I only have a phone with a Ukrainian number. Is that a problem?' },
+      { id: '12', speaker: 'Sachbearbeiter', text: 'Nein, das geht. Schreiben Sie die Nummer hier auf. Haben Sie eine E-Mail-Adresse?', translation: 'No, that\'s fine. Write the number here. Do you have an email address?' },
+      { id: '13', speaker: 'Maria', text: 'Ja, meine E-Mail-Adresse ist maria.kovalenko@gmail.com. Können Sie mir das alles aufschreiben? Ich verstehe nicht alles.', translation: 'Yes, my email address is maria.kovalenko@gmail.com. Can you write everything down for me? I don\'t understand everything.' },
+      { id: '14', speaker: 'Sachbearbeiter', text: 'Natürlich. Ich schreibe Ihnen alles auf. Sie bekommen heute eine Fiktionsbescheinigung. Ihr Aufenthaltstitel kommt in 4-6 Wochen per Post.', translation: 'Of course. I will write everything down for you. You will receive a temporary permit today. Your residence permit will come in 4-6 weeks by post.' },
+      { id: '15', speaker: 'Maria', text: 'Wie lange dauert das? 4 bis 6 Wochen?', translation: 'How long does that take? 4 to 6 weeks?' },
+      { id: '16', speaker: 'Sachbearbeiter', text: 'Ja, ungefähr. Wir schicken Ihnen auch eine E-Mail.', translation: 'Yes, approximately. We will also send you an email.' },
+      { id: '17', speaker: 'Maria', text: 'Danke. Und was kostet das?', translation: 'Thank you. And what does that cost?' },
+      { id: '18', speaker: 'Sachbearbeiter', text: 'Der Aufenthaltstitel kostet 100 Euro. Sie können heute bar oder mit Karte bezahlen.', translation: 'The residence permit costs 100 euros. You can pay today in cash or by card.' },
+      { id: '19', speaker: 'Maria', text: 'Ich bezahle mit Karte. Wann muss ich wiederkommen?', translation: 'I will pay by card. When must I come back?' },
+      { id: '20', speaker: 'Sachbearbeiter', text: 'Sie müssen nicht wiederkommen. Wir schicken Ihnen alles per Post. Nur wenn es Probleme gibt, rufen wir Sie an.', translation: 'You don\'t have to come back. We will send you everything by post. Only if there are problems, we will call you.' },
+      { id: '21', speaker: 'Maria', text: 'Gut, danke. Können Sie mir eine Telefonnummer geben? Falls ich Fragen habe?', translation: 'Good, thank you. Can you give me a phone number? In case I have questions?' },
+      { id: '22', speaker: 'Sachbearbeiter', text: 'Ja, hier ist unsere Nummer: 030-123456. Sie können auch eine E-Mail schreiben.', translation: 'Yes, here is our number: 030-123456. You can also write an email.' },
+      { id: '23', speaker: 'Maria', text: 'Vielen Dank! Auf Wiedersehen.', translation: 'Thank you very much! Goodbye.' },
+      { id: '24', speaker: 'Sachbearbeiter', text: 'Auf Wiedersehen, Frau Kovalenko. Viel Erfolg!', translation: 'Goodbye, Ms. Kovalenko. Good luck!' }
+    ],
+    vocabulary: [
+      { german: 'die Ausländerbehörde', translation: 'immigration office', context: 'Ich gehe zur Ausländerbehörde.', translationUK: 'міграційна служба', translationHR: 'ured za strance' },
+      { german: 'der Aufenthaltstitel', translation: 'residence permit', context: 'Ich brauche einen Aufenthaltstitel.', translationUK: 'дозвіл на проживання', translationHR: 'boravišna dozvola' },
+      { german: 'die Fiktionsbescheinigung', translation: 'temporary permit', context: 'Sie bekommen eine Fiktionsbescheinigung.', translationUK: 'тимчасова довідка', translationHR: 'privremena potvrda' },
+      { german: 'der Pass', translation: 'passport', context: 'Hier ist mein Pass.', translationUK: 'паспорт', translationHR: 'putovnica' },
+      { german: 'die Bescheinigung', translation: 'certificate', context: 'Ich habe eine Bescheinigung.', translationUK: 'довідка', translationHR: 'potvrda' },
+      { german: 'der Termin', translation: 'appointment', context: 'Ich habe einen Termin.', translationUK: 'запис, зустріч', translationHR: 'termin' },
+      { german: 'das Formular', translation: 'form', context: 'Bitte füllen Sie das Formular aus.', translationUK: 'форма, бланк', translationHR: 'formular' },
+      { german: 'das biometrische Foto', translation: 'biometric photo', context: 'Ich brauche biometrische Fotos.', translationUK: 'біометричне фото', translationHR: 'biometrijska fotografija' },
+      { german: 'die Unterlagen', translation: 'documents', context: 'Haben Sie Ihre Unterlagen dabei?', translationUK: 'документи', translationHR: 'dokumenti' },
+      { german: 'die Gebühr', translation: 'fee', context: 'Die Gebühr beträgt 100 Euro.', translationUK: 'плата, збір', translationHR: 'naknada' },
+      { german: 'bar bezahlen', translation: 'pay in cash', context: 'Ich bezahle bar.', translationUK: 'платити готівкою', translationHR: 'platiti gotovinom' },
+      { german: 'mit Karte bezahlen', translation: 'pay by card', context: 'Ich bezahle mit Karte.', translationUK: 'платити карткою', translationHR: 'platiti karticom' },
+      { german: 'die Verlängerung', translation: 'extension', context: 'Ich brauche eine Verlängerung.', translationUK: 'продовження', translationHR: 'produženje' },
+      { german: 'die Handynummer', translation: 'mobile number', context: 'Meine Handynummer ist...', translationUK: 'номер телефону', translationHR: 'broj mobitela' },
+      { german: 'die E-Mail-Adresse', translation: 'email address', context: 'Meine E-Mail-Adresse ist...', translationUK: 'електронна адреса', translationHR: 'email adresa' },
+      { german: 'der Antrag', translation: 'application', context: 'Ich stelle einen Antrag.', translationUK: 'заява', translationHR: 'zahtjev' }
+    ],
+    exercises: [
+      {
+        id: '1',
+        type: 'fill-in-blank',
+        question: 'Guten Tag. Mein ___ ist Maria Kovalenko. Ich habe einen ___ um 10 Uhr.',
+        blanks: ['Name', 'Termin'],
+        correctAnswer: 'Name, Termin',
+        hint: 'Was sagt Maria am Anfang?'
+      },
+      {
+        id: '2',
+        type: 'fill-in-blank',
+        question: 'Haben Sie Ihre ___ dabei? Ja. Hier sind meine ___. Mein Pass und meine Bescheinigung.',
+        blanks: ['Unterlagen', 'Papiere'],
+        correctAnswer: 'Unterlagen, Papiere'
+      },
+      {
+        id: '3',
+        type: 'fill-in-blank',
+        question: 'Können Sie ___ sprechen? Ich spreche ___ Deutsch.',
+        blanks: ['langsam', 'wenig'],
+        correctAnswer: 'langsam, wenig'
+      },
+      {
+        id: '4',
+        type: 'multiple-choice',
+        question: 'Was braucht man für den Aufenthaltstitel?',
+        options: [
+          'Nur den Pass',
+          'Pass, Fotos und Bescheinigung',
+          'Nur eine E-Mail-Adresse',
+          'Nichts'
+        ],
+        correctAnswer: 'Pass, Fotos und Bescheinigung'
+      },
+      {
+        id: '5',
+        type: 'multiple-choice',
+        question: 'Wie viel kostet der Aufenthaltstitel?',
+        options: ['50 Euro', '100 Euro', '200 Euro', 'Er ist kostenlos'],
+        correctAnswer: '100 Euro'
+      },
+      {
+        id: '6',
+        type: 'multiple-choice',
+        question: 'Wie lange dauert es, bis der Aufenthaltstitel kommt?',
+        options: ['1-2 Tage', '1 Woche', '4-6 Wochen', '6 Monate'],
+        correctAnswer: '4-6 Wochen'
+      },
+      {
+        id: '7',
+        type: 'multiple-choice',
+        question: 'Was ist eine Fiktionsbescheinigung?',
+        options: [
+          'Ein falsches Dokument',
+          'Eine vorläufige Erlaubnis, bis der Aufenthaltstitel kommt',
+          'Ein Arbeitsvertrag',
+          'Ein Bankkonto'
+        ],
+        correctAnswer: 'Eine vorläufige Erlaubnis, bis der Aufenthaltstitel kommt'
+      },
+      {
+        id: '8',
+        type: 'multiple-choice',
+        question: 'Was sagt man, wenn man nicht alles versteht?',
+        options: [
+          'Ich gehe nach Hause',
+          'Das ist mir egal',
+          'Können Sie mir das aufschreiben?',
+          'Ich weiß es'
+        ],
+        correctAnswer: 'Können Sie mir das aufschreiben?'
+      }
+    ],
+    rolePlay: [
+      { id: '1', prompt: 'Guten Tag. Wie heißen Sie?', expectedAnswer: 'Guten Tag. Mein Name ist...' },
+      { id: '2', prompt: 'Haben Sie Ihren Pass dabei?', expectedAnswer: 'Ja, hier ist mein Pass.' },
+      { id: '3', prompt: 'Wann sind Sie nach Deutschland gekommen?', expectedAnswer: 'Im... (Monat/Jahr)' },
+      { id: '4', prompt: 'Haben Sie eine deutsche Handynummer?', expectedAnswer: 'Ja/Nein, ich habe...' },
+      { id: '5', prompt: 'Welche Sprachen sprechen Sie?', expectedAnswer: 'Ich spreche...' }
+    ],
+    culturalTips: [
+      {
+        id: '1',
+        icon: '🕐',
+        title: 'Pünktlichkeit',
+        content: 'In Deutschland ist Pünktlichkeit sehr wichtig! Komme 5-10 Minuten früher zum Termin.'
+      },
+      {
+        id: '2',
+        icon: '📱',
+        title: 'Handynummer',
+        content: 'Eine ukrainische/ausländische Nummer ist kein Problem. Aber: Eine deutsche Nummer macht vieles einfacher (z.B. für Wohnungssuche, Jobsuche).'
+      },
+      {
+        id: '3',
+        icon: '💶',
+        title: 'Kosten',
+        content: 'Der Aufenthaltstitel kostet Geld. Wenn du kein Geld hast, frage beim Jobcenter nach Hilfe.'
+      },
+      {
+        id: '4',
+        icon: '⏰',
+        title: 'Wartezeit',
+        content: 'Es kann lange dauern (4-6 Wochen oder mehr). Die Fiktionsbescheinigung ist in dieser Zeit dein wichtigstes Dokument!'
+      },
+      {
+        id: '5',
+        icon: '🗣️',
+        title: 'Dolmetscher',
+        content: 'Du darfst eine Person mitbringen, die übersetzt. Frage vorher beim Amt, ob das okay ist.'
+      },
+      {
+        id: '6',
+        icon: '📧',
+        title: 'Kommunikation',
+        content: 'Deutsche Behörden schreiben oft Briefe (per Post). Prüfe deinen Briefkasten regelmäßig!'
+      }
+    ],
+    checklist: [
+      { id: '1', category: 'Vor dem Termin', text: 'Termin-Bestätigung ausdrucken oder auf dem Handy speichern' },
+      { id: '2', category: 'Vor dem Termin', text: 'Pass mitbringen (Original!)' },
+      { id: '3', category: 'Vor dem Termin', text: '2 biometrische Fotos (35x45mm)' },
+      { id: '4', category: 'Vor dem Termin', text: 'Bescheinigung von der Erstaufnahme/Unterkunft' },
+      { id: '5', category: 'Vor dem Termin', text: 'Krankenversicherungsnachweis (falls vorhanden)' },
+      { id: '6', category: 'Vor dem Termin', text: '100 Euro für die Gebühr (bar oder Karte)' },
+      { id: '7', category: 'Wichtige Sätze', text: 'Guten Tag, mein Name ist...' },
+      { id: '8', category: 'Wichtige Sätze', text: 'Ich habe einen Termin um...' },
+      { id: '9', category: 'Wichtige Sätze', text: 'Hier sind meine Papiere' },
+      { id: '10', category: 'Wichtige Sätze', text: 'Können Sie langsam sprechen?' },
+      { id: '11', category: 'Wichtige Sätze', text: 'Können Sie mir das aufschreiben?' },
+      { id: '12', category: 'Wichtige Sätze', text: 'Ich habe nur ein Handy mit [ukrainischer] Nummer' },
+      { id: '13', category: 'Wichtige Sätze', text: 'Wann muss ich wiederkommen?' },
+      { id: '14', category: 'Nach dem Termin', text: 'Fiktionsbescheinigung gut aufbewahren!' },
+      { id: '15', category: 'Nach dem Termin', text: 'Notiere dir: Wann kommt der Aufenthaltstitel?' },
+      { id: '16', category: 'Nach dem Termin', text: 'Notiere dir die Telefonnummer für Rückfragen' },
+      { id: '17', category: 'Nach dem Termin', text: 'Prüfe regelmäßig deine E-Mails und Post' }
+    ]
+  },
+  {
     id: 'einwohnermeldeamt',
     title: 'Einwohnermeldeamt',
     category: 'erste-schritte',
