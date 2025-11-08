@@ -50,11 +50,12 @@ export default function ErsteSchritte({ scenarios, onUpdateScenario }: ErsteSchr
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {scenarios.map((scenario) => (
+        {scenarios.map((scenario, index) => (
           <button
             key={scenario.id}
             onClick={() => setSelectedScenario(scenario)}
-            className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-blue-500 relative group"
+            className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-soft hover:shadow-large transition-all duration-300 transform hover:scale-105 text-left border-2 border-gray-200 dark:border-gray-700 hover:border-primary-500 relative group animate-scale-in"
+            style={{ animationDelay: `${index * 100}ms` }}
           >
             {scenario.completed && (
               <div className="absolute top-4 right-4 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
@@ -86,7 +87,7 @@ export default function ErsteSchritte({ scenarios, onUpdateScenario }: ErsteSchr
               <span>✏️ {scenario.exercises.length} {t('ersteSchritte.exercises')}</span>
             </div>
 
-            <div className="mt-4 text-blue-600 dark:text-blue-400 font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
+            <div className="mt-4 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 group-hover:gap-3 transition-all shadow-soft group-hover:shadow-medium">
               {scenario.completed ? t('ersteSchritte.review') : t('ersteSchritte.start')}
               <span>→</span>
             </div>

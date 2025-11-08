@@ -156,9 +156,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-[#F9FAFB] dark:bg-gray-900">
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 animate-fade-in">
         {renderPage()}
       </main>
       <footer className="bg-white dark:bg-gray-800 mt-16 py-6 border-t border-gray-200 dark:border-gray-700">
