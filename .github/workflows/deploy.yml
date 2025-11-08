@@ -37,6 +37,15 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Debug - List dist contents
+        run: |
+          echo "=== Contents of dist folder ==="
+          ls -lah dist/
+          echo "=== Size of dist ==="
+          du -sh dist/
+          echo "=== Total size of all files ==="
+          find dist -type f -exec ls -lh {} \; | awk '{sum+=$5} END {print "Total:", sum, "bytes"}'
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
