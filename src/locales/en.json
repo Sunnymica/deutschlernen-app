@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "Learn German",
+    "subtitle": "Multilingual Learning Platform"
+  },
+  "nav": {
+    "home": "Home",
+    "lessons": "Lessons",
+    "vocabulary": "Vocabulary",
+    "grammar": "Grammar",
+    "progress": "Progress"
+  },
+  "home": {
+    "welcome": "Welcome to the German Learning Platform!",
+    "description": "Learn German with interactive lessons, vocabulary training, and grammar exercises.",
+    "getStarted": "Get Started",
+    "features": {
+      "title": "Our Features",
+      "interactive": "Interactive Lessons",
+      "vocabulary": "Comprehensive Vocabulary Training",
+      "grammar": "Structured Grammar Exercises",
+      "progress": "Progress Tracking"
+    }
+  },
+  "lessons": {
+    "title": "Lessons",
+    "selectLesson": "Select a Lesson",
+    "level": "Level",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "start": "Start Lesson",
+    "continue": "Continue",
+    "completed": "Completed"
+  },
+  "vocabulary": {
+    "title": "Vocabulary Training",
+    "learn": "Learn Vocabulary",
+    "practice": "Practice",
+    "mastered": "Mastered",
+    "learning": "Learning",
+    "showAnswer": "Show Answer",
+    "nextCard": "Next Card",
+    "know": "I Know",
+    "dontKnow": "Don't Know"
+  },
+  "grammar": {
+    "title": "Grammar",
+    "topics": "Grammar Topics",
+    "exercises": "Exercises",
+    "explanation": "Explanation",
+    "practice": "Practice",
+    "checkAnswer": "Check Answer",
+    "correct": "Correct!",
+    "incorrect": "Not correct. Try again."
+  },
+  "progress": {
+    "title": "Your Progress",
+    "lessonsCompleted": "Lessons Completed",
+    "vocabularyMastered": "Vocabulary Mastered",
+    "grammarTopics": "Grammar Topics",
+    "overallProgress": "Overall Progress",
+    "keepGoing": "Keep Going!"
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading...",
+    "language": "Language"
+  }
+}

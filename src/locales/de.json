@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "Deutsch Lernen",
+    "subtitle": "Mehrsprachige Lernplattform"
+  },
+  "nav": {
+    "home": "Startseite",
+    "lessons": "Lektionen",
+    "vocabulary": "Vokabeln",
+    "grammar": "Grammatik",
+    "progress": "Fortschritt"
+  },
+  "home": {
+    "welcome": "Willkommen auf der Deutsch-Lernplattform!",
+    "description": "Lernen Sie Deutsch mit interaktiven Lektionen, Vokabeltraining und Grammatikübungen.",
+    "getStarted": "Jetzt starten",
+    "features": {
+      "title": "Unsere Funktionen",
+      "interactive": "Interaktive Lektionen",
+      "vocabulary": "Umfangreiches Vokabeltraining",
+      "grammar": "Strukturierte Grammatikübungen",
+      "progress": "Fortschrittsverfolgung"
+    }
+  },
+  "lessons": {
+    "title": "Lektionen",
+    "selectLesson": "Wähle eine Lektion",
+    "level": "Niveau",
+    "beginner": "Anfänger",
+    "intermediate": "Mittelstufe",
+    "advanced": "Fortgeschritten",
+    "start": "Lektion starten",
+    "continue": "Fortsetzen",
+    "completed": "Abgeschlossen"
+  },
+  "vocabulary": {
+    "title": "Vokabeltraining",
+    "learn": "Vokabeln lernen",
+    "practice": "Üben",
+    "mastered": "Beherrscht",
+    "learning": "Wird gelernt",
+    "showAnswer": "Antwort zeigen",
+    "nextCard": "Nächste Karte",
+    "know": "Gewusst",
+    "dontKnow": "Nicht gewusst"
+  },
+  "grammar": {
+    "title": "Grammatik",
+    "topics": "Grammatikthemen",
+    "exercises": "Übungen",
+    "explanation": "Erklärung",
+    "practice": "Üben",
+    "checkAnswer": "Antwort prüfen",
+    "correct": "Richtig!",
+    "incorrect": "Nicht korrekt. Versuche es nochmal."
+  },
+  "progress": {
+    "title": "Dein Fortschritt",
+    "lessonsCompleted": "Lektionen abgeschlossen",
+    "vocabularyMastered": "Vokabeln beherrscht",
+    "grammarTopics": "Grammatikthemen",
+    "overallProgress": "Gesamtfortschritt",
+    "keepGoing": "Weiter so!"
+  },
+  "common": {
+    "next": "Weiter",
+    "back": "Zurück",
+    "submit": "Absenden",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "loading": "Lädt...",
+    "language": "Sprache"
+  }
+}
