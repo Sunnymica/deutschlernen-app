@@ -43,8 +43,11 @@ jobs:
           ls -lah dist/
           echo "=== Size of dist ==="
           du -sh dist/
-          echo "=== Total size of all files ==="
-          find dist -type f -exec ls -lh {} \; | awk '{sum+=$5} END {print "Total:", sum, "bytes"}'
+          echo "=== Files in dist/assets ==="
+          ls -lh dist/assets/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
