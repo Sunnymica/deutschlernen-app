@@ -2,6 +2,8 @@
 
 A comprehensive German language learning platform with support for **four languages**: German (DE), English (EN), Ukrainian (UK), and Croatian (HR).
 
+**🌐 Live Demo:** [https://sunnymica.github.io/deutschlernen-app/](https://sunnymica.github.io/deutschlernen-app/)
+
 ## ✨ Features
 
 - **🌍 Multilingual Interface**: Switch seamlessly between German, English, Ukrainian, and Croatian
