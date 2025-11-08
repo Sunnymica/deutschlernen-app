@@ -5,6 +5,7 @@
   },
   "nav": {
     "home": "Startseite",
+    "ersteSchritte": "Erste Schritte",
     "lessons": "Lektionen",
     "vocabulary": "Vokabeln",
     "grammar": "Grammatik",
@@ -70,5 +71,64 @@
     "save": "Speichern",
     "loading": "Lädt...",
     "language": "Sprache"
+  },
+  "onboarding": {
+    "step": "Schritt",
+    "welcome": "Willkommen!",
+    "welcomeDescription": "Personalisieren Sie Ihre Lernerfahrung",
+    "yourName": "Ihr Name",
+    "optional": "Optional",
+    "namePlaceholder": "z.B. Maria",
+    "chooseProfession": "Wählen Sie Ihren Beruf",
+    "professionDescription": "Wir passen die Lerninhalte an Ihr Berufsfeld an",
+    "chooseLifeSituation": "Ihre Lebenssituation",
+    "lifeSituationDescription": "Wählen Sie alle zutreffenden Situationen aus",
+    "getStarted": "Los geht's"
+  },
+  "professions": {
+    "handwerk": "Handwerk",
+    "finanzen": "Finanzen",
+    "logistik": "Logistik",
+    "pflege": "Pflege",
+    "medizin": "Medizin",
+    "gastronomie": "Gastronomie",
+    "it": "IT",
+    "einzelhandel": "Einzelhandel",
+    "bildung": "Bildung",
+    "technik": "Technik"
+  },
+  "lifeSituations": {
+    "neu-in-deutschland": "Neu in Deutschland",
+    "mit-kindern": "Mit Kindern",
+    "jobsuche": "Jobsuche",
+    "studium": "Studium",
+    "ausbildung": "Ausbildung",
+    "rentenalter": "Rentenalter"
+  },
+  "ersteSchritte": {
+    "title": "Erste Schritte in Deutschland",
+    "description": "Praktische Alltagssituationen für Neuankömmlinge - Niveau A1",
+    "dialogues": "Dialoge",
+    "words": "Wörter",
+    "exercises": "Übungen",
+    "start": "Starten",
+    "review": "Wiederholen",
+    "dialogue": "Dialog",
+    "vocabulary": "Vokabular",
+    "practice": "Üben",
+    "dialogueTitle": "Beispieldialog",
+    "showTranslations": "Übersetzungen anzeigen",
+    "hideTranslations": "Übersetzungen ausblenden",
+    "vocabularyTitle": "Wichtige Wörter & Ausdrücke",
+    "practiceTitle": "Übungen",
+    "yourAnswer": "Ihre Antwort...",
+    "correctAnswer": "Richtige Antwort",
+    "finish": "Fertig",
+    "tips": {
+      "title": "Tipps für Ihren Erfolg",
+      "tip1": "Üben Sie jeden Dialog mehrmals laut",
+      "tip2": "Notieren Sie neue Wörter in einem Vokabelheft",
+      "tip3": "Versuchen Sie die Situationen im Alltag anzuwenden"
+    }
   }
 }
