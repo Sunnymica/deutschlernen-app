@@ -1,179 +1,113 @@
-import { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Home from './components/Home';
-import Onboarding from './components/Onboarding';
-import ErsteSchritte from './components/ErsteSchritte';
-import Lessons from './components/Lessons';
-import Vocabulary from './components/Vocabulary';
-import Grammar from './components/Grammar';
-import Progress from './components/Progress';
-import {
-  Lesson,
-  VocabularyCard,
-  GrammarTopic,
-  Progress as ProgressType,
-  UserProfile,
-  Scenario
-} from './types';
-import { sampleLessons, sampleVocabulary, sampleGrammarTopics } from './data/sampleData';
-import { ersteSchritteScenarios } from './data/ersteSchritteScenarios';
+import { useState } from 'react'
 
-type Page = 'home' | 'ersteSchritte' | 'lessons' | 'vocabulary' | 'grammar' | 'progress';
+type Language = 'de' | 'en' | 'uk' | 'hr'
 
-function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [lessons, setLessons] = useState<Lesson[]>(sampleLessons);
-  const [vocabularyCards, setVocabularyCards] = useState<VocabularyCard[]>(sampleVocabulary);
-  const [grammarTopics] = useState<GrammarTopic[]>(sampleGrammarTopics);
-  const [scenarios, setScenarios] = useState<Scenario[]>(ersteSchritteScenarios);
-
-  // Load saved data from localStorage
-  useEffect(() => {
-    const savedProfile = localStorage.getItem('userProfile');
-    const savedLessons = localStorage.getItem('lessons');
-    const savedVocabulary = localStorage.getItem('vocabulary');
-    const savedScenarios = localStorage.getItem('scenarios');
-
-    if (savedProfile) {
-      setUserProfile(JSON.parse(savedProfile));
-    }
-    if (savedLessons) {
-      setLessons(JSON.parse(savedLessons));
-    }
-    if (savedVocabulary) {
-      setVocabularyCards(JSON.parse(savedVocabulary));
-    }
-    if (savedScenarios) {
-      setScenarios(JSON.parse(savedScenarios));
-    }
-  }, []);
-
-  // Save data to localStorage whenever it changes
-  useEffect(() => {
-    if (userProfile) {
-      localStorage.setItem('userProfile', JSON.stringify(userProfile));
-    }
-  }, [userProfile]);
-
-  useEffect(() => {
-    localStorage.setItem('lessons', JSON.stringify(lessons));
-  }, [lessons]);
-
-  useEffect(() => {
-    localStorage.setItem('vocabulary', JSON.stringify(vocabularyCards));
-  }, [vocabularyCards]);
-
-  useEffect(() => {
-    localStorage.setItem('scenarios', JSON.stringify(scenarios));
-  }, [scenarios]);
-
-  const handleOnboardingComplete = (profile: UserProfile) => {
-    setUserProfile(profile);
-    setCurrentPage('ersteSchritte');
-  };
-
-  const handleNavigate = (page: string) => {
-    setCurrentPage(page as Page);
-  };
-
-  const handleStartLesson = (lessonId: string) => {
-    console.log('Starting lesson:', lessonId);
-    // In a real app, this would navigate to the lesson content
-    // For now, we'll just update the progress
-    setLessons(prev =>
-      prev.map(lesson =>
-        lesson.id === lessonId
-          ? { ...lesson, progress: Math.min(lesson.progress + 10, 100) }
-          : lesson
-      )
-    );
-  };
-
-  const handleUpdateVocabularyCard = (cardId: string, mastered: boolean) => {
-    setVocabularyCards(prev =>
-      prev.map(card =>
-        card.id === cardId ? { ...card, mastered } : card
-      )
-    );
-  };
-
-  const handleUpdateScenario = (scenarioId: string, completed: boolean) => {
-    setScenarios(prev =>
-      prev.map(scenario =>
-        scenario.id === scenarioId ? { ...scenario, completed } : scenario
-      )
-    );
-  };
-
-  const calculateProgress = (): ProgressType => {
-    const completedLessons = lessons.filter(l => l.completed).length;
-    const masteredVocabulary = vocabularyCards.filter(v => v.mastered).length;
-    const completedScenarios = scenarios.filter(s => s.completed).length;
-
-    return {
-      lessonsCompleted: completedLessons + completedScenarios,
-      totalLessons: lessons.length + scenarios.length,
-      vocabularyMastered: masteredVocabulary,
-      totalVocabulary: vocabularyCards.length,
-      grammarTopicsCompleted: 0, // Would be calculated based on completed exercises
-      totalGrammarTopics: grammarTopics.length
-    };
-  };
-
-  // Show onboarding if user hasn't completed it
-  if (!userProfile || !userProfile.onboardingCompleted) {
-    return <Onboarding onComplete={handleOnboardingComplete} />;
+const translations = {
+  de: {
+    title: 'Deutsch Lernen',
+    subtitle: 'Mehrsprachige Lernplattform',
+    selectLanguage: 'Wähle deine Sprache:',
+    start: 'Los geht\'s!',
+    scenario: 'Ausländerbehörde',
+    scenarioDesc: 'Aufenthaltstitel beantragen'
+  },
+  en: {
+    title: 'Learn German',
+    subtitle: 'Multilingual Learning Platform',
+    selectLanguage: 'Choose your language:',
+    start: 'Let\'s go!',
+    scenario: 'Immigration Office',
+    scenarioDesc: 'Apply for residence permit'
+  },
+  uk: {
+    title: 'Вивчай німецьку',
+    subtitle: 'Багатомовна навчальна платформа',
+    selectLanguage: 'Оберіть мову:',
+    start: 'Розпочати!',
+    scenario: 'Відділ у справах іноземців',
+    scenarioDesc: 'Подати заяву на дозвіл на проживання'
+  },
+  hr: {
+    title: 'Učite njemački',
+    subtitle: 'Višejezična platforma za učenje',
+    selectLanguage: 'Odaberite jezik:',
+    start: 'Idemo!',
+    scenario: 'Ured za strance',
+    scenarioDesc: 'Zatražite dozvolu boravka'
   }
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <Home onNavigate={handleNavigate} />;
-      case 'ersteSchritte':
-        return (
-          <ErsteSchritte
-            scenarios={scenarios}
-            onUpdateScenario={handleUpdateScenario}
-          />
-        );
-      case 'lessons':
-        return <Lessons lessons={lessons} onStartLesson={handleStartLesson} />;
-      case 'vocabulary':
-        return (
-          <Vocabulary
-            cards={vocabularyCards}
-            onUpdateCard={handleUpdateVocabularyCard}
-          />
-        );
-      case 'grammar':
-        return <Grammar topics={grammarTopics} />;
-      case 'progress':
-        return <Progress progress={calculateProgress()} />;
-      default:
-        return <Home onNavigate={handleNavigate} />;
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-[#F9FAFB] dark:bg-gray-900">
-      <Header currentPage={currentPage} onNavigate={handleNavigate} />
-      <main className="container mx-auto px-4 py-8 animate-fade-in">
-        {renderPage()}
-      </main>
-      <footer className="bg-white dark:bg-gray-800 mt-16 py-6 border-t border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
-          <p>© 2024 Deutsch Lernen - Multilingual Learning Platform</p>
-          <p className="text-sm mt-2">Supporting DE • EN • UK • HR</p>
-          {userProfile.name && (
-            <p className="text-sm mt-1">
-              👤 {userProfile.name} • {userProfile.profession && `💼 ${userProfile.profession}`}
-            </p>
-          )}
-        </div>
-      </footer>
-    </div>
-  );
 }
 
-export default App;
+export default function App() {
+  const [language, setLanguage] = useState<Language>('de')
+  const [started, setStarted] = useState(false)
+  
+  const t = translations[language]
+  
+  if (!started) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
+          <h1 className="text-4xl font-bold text-indigo-600 mb-2">{t.title}</h1>
+          <p className="text-gray-600 mb-8">{t.subtitle}</p>
+          
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-3">
+              {t.selectLanguage}
+            </label>
+            <div className="grid grid-cols-2 gap-3">
+              {(['de', 'en', 'uk', 'hr'] as Language[]).map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => setLanguage(lang)}
+                  className={`p-3 rounded-lg border-2 transition-all ${
+                    language === lang
+                      ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
+                      : 'border-gray-200 hover:border-indigo-300'
+                  }`}
+                >
+                  {lang === 'de' && '🇩🇪 Deutsch'}
+                  {lang === 'en' && '🇬🇧 English'}
+                  {lang === 'uk' && '🇺🇦 Українська'}
+                  {lang === 'hr' && '🇭🇷 Hrvatski'}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          <button
+            onClick={() => setStarted(true)}
+            className="w-full bg-gradient-to-r from-indigo-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-indigo-600 hover:to-blue-700 transition-all shadow-md"
+          >
+            {t.start}
+          </button>
+        </div>
+      </div>
+    )
+  }
+  
+  return (
+    <div className="min-h-screen bg-gray-50 p-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white rounded-xl shadow-md p-6 mb-6">
+          <button
+            onClick={() => setStarted(false)}
+            className="text-indigo-600 hover:text-indigo-800 mb-4"
+          >
+            ← Zurück
+          </button>
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">{t.scenario}</h2>
+          <p className="text-gray-600">{t.scenarioDesc}</p>
+        </div>
+        
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <div className="space-y-4">
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <p className="text-gray-800">
+                <strong>Sachbearbeiter:</strong> Guten Tag. Wie kann ich Ihnen helfen?
+              </p>
+            </div>
+            <div className="bg-green-50 p-4 rounded-lg ml-8">
+              <p className="text-gray-800">
+                <strong>Sie:</strong> Guten Tag. Ich möchte meinen Aufenthaltstitel verlängern.
+              </p>
+            </div>
