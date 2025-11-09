@@ -9,7 +9,8 @@ const translations = {
     selectLanguage: 'Wähle deine Sprache:',
     start: 'Los geht\'s!',
     scenario: 'Ausländerbehörde',
-    scenarioDesc: 'Aufenthaltstitel beantragen'
+    scenarioDesc: 'Aufenthaltstitel beantragen',
+    back: 'Zurück'
   },
   en: {
     title: 'Learn German',
@@ -17,7 +18,8 @@ const translations = {
     selectLanguage: 'Choose your language:',
     start: 'Let\'s go!',
     scenario: 'Immigration Office',
-    scenarioDesc: 'Apply for residence permit'
+    scenarioDesc: 'Apply for residence permit',
+    back: 'Back'
   },
   uk: {
     title: 'Вивчай німецьку',
@@ -25,7 +27,8 @@ const translations = {
     selectLanguage: 'Оберіть мову:',
     start: 'Розпочати!',
     scenario: 'Відділ у справах іноземців',
-    scenarioDesc: 'Подати заяву на дозвіл на проживання'
+    scenarioDesc: 'Подати заяву на дозвіл на проживання',
+    back: 'Назад'
   },
   hr: {
     title: 'Učite njemački',
@@ -33,7 +36,8 @@ const translations = {
     selectLanguage: 'Odaberite jezik:',
     start: 'Idemo!',
     scenario: 'Ured za strance',
-    scenarioDesc: 'Zatražite dozvolu boravka'
+    scenarioDesc: 'Zatražite dozvolu boravka',
+    back: 'Natrag'
   }
 }
 
@@ -93,7 +97,7 @@ export default function App() {
             onClick={() => setStarted(false)}
             className="text-indigo-600 hover:text-indigo-800 mb-4"
           >
-            ← Zurück
+            ← {t.back}
           </button>
           <h2 className="text-3xl font-bold text-gray-800 mb-2">{t.scenario}</h2>
           <p className="text-gray-600">{t.scenarioDesc}</p>
@@ -111,7 +115,13 @@ export default function App() {
                 <strong>Sie:</strong> Guten Tag. Ich möchte meinen Aufenthaltstitel verlängern.
               </p>
             </div>
-</div>
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <p className="text-gray-800">
+                <strong>Sachbearbeiter:</strong> Haben Sie alle Unterlagen dabei?
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
