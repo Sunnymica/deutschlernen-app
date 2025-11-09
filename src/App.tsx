@@ -1,10 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
-import ErsteSchritte from './components/ErsteSchritte'
-import ScenarioDetail from './components/ScenarioDetail'
-import Vocabulary from './components/Vocabulary'
-import Grammar from './components/Grammar'
-import { ersteSchritteScenarios } from './data/ersteSchritteScenarios'
+import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom'
 
 type Language = 'de' | 'en' | 'uk' | 'hr'
 
@@ -13,28 +8,36 @@ const translations = {
     title: 'Deutsch Lernen',
     subtitle: 'Mehrsprachige Lernplattform',
     selectLanguage: 'Waehle deine Sprache:',
-    start: 'Los gehts!',
+    scenarios: 'Szenarien',
+    vocabulary: 'Vokabeln',
+    grammar: 'Grammatik',
     back: 'Zurueck'
   },
   en: {
     title: 'Learn German',
     subtitle: 'Multilingual Learning Platform',
     selectLanguage: 'Choose your language:',
-    start: 'Lets go!',
+    scenarios: 'Scenarios',
+    vocabulary: 'Vocabulary',
+    grammar: 'Grammar',
     back: 'Back'
   },
   uk: {
     title: 'Вивчай німецьку',
     subtitle: 'Багатомовна навчальна платформа',
     selectLanguage: 'Оберіть мову:',
-    start: 'Розпочати!',
+    scenarios: 'Сценарії',
+    vocabulary: 'Словник',
+    grammar: 'Граматика',
     back: 'Назад'
   },
   hr: {
     title: 'Ucite njemacki',
     subtitle: 'Visejezicna platforma za ucenje',
     selectLanguage: 'Odaberite jezik:',
-    start: 'Idemo!',
+    scenarios: 'Scenariji',
+    vocabulary: 'Vokabular',
+    grammar: 'Gramatika',
     back: 'Natrag'
   }
 }
@@ -55,12 +58,12 @@ function LanguageSelector({ onSelect }: { onSelect: (lang: Language) => void }) 
               <button
                 key={lang}
                 onClick={() => onSelect(lang)}
-                className="p-3 rounded-lg border-2 transition-all hover:border-indigo-300 hover:bg-indigo-50"
+                className="p-3 rounded-lg border-2 border-gray-200 transition-all hover:border-indigo-500 hover:bg-indigo-50"
               >
-                {lang === 'de' && 'Deutsch'}
-                {lang === 'en' && 'English'}
-                {lang === 'uk' && 'Українська'}
-                {lang === 'hr' && 'Hrvatski'}
+                {lang === 'de' && 'DE Deutsch'}
+                {lang === 'en' && 'GB English'}
+                {lang === 'uk' && 'UA Українська'}
+                {lang === 'hr' && 'HR Hrvatski'}
               </button>
             ))}
           </div>
@@ -85,23 +88,23 @@ function Home({ language }: { language: Language }) {
         <div className="grid gap-4">
           <button
             onClick={() => navigate('/scenarios')}
-            className="w-full bg-gradient-to-r from-indigo-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-indigo-600 hover:to-blue-700 transition-all shadow-md"
+            className="w-full bg-gradient-to-r from-indigo-500 to-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-indigo-600 hover:to-blue-700 transition-all shadow-md text-lg"
           >
-            Erste Schritte
+            {t.scenarios}
           </button>
           
           <button
             onClick={() => navigate('/vocabulary')}
-            className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all shadow-md"
+            className="w-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-700 transition-all shadow-md text-lg"
           >
-            Vokabeln
+            {t.vocabulary}
           </button>
           
           <button
             onClick={() => navigate('/grammar')}
-            className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md"
+            className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all shadow-md text-lg"
           >
-            Grammatik
+            {t.grammar}
           </button>
         </div>
       </div>
@@ -109,7 +112,7 @@ function Home({ language }: { language: Language }) {
   )
 }
 
-function ScenariosOverview({ language }: { language: Language }) {
+function ScenariosPage({ language }: { language: Language }) {
   const navigate = useNavigate()
   const t = translations[language]
 
@@ -118,25 +121,63 @@ function ScenariosOverview({ language }: { language: Language }) {
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => navigate('/')}
-          className="text-indigo-600 hover:text-indigo-800 mb-4 flex items-center"
+          className="text-indigo-600 hover:text-indigo-800 mb-4 font-medium"
         >
-          {t.back}
+          ← {t.back}
         </button>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">Erste Schritte Szenarien</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">{t.scenarios}</h1>
 
-        <div className="grid gap-4">
-          {ersteSchritteScenarios.map((scenario) => (
-            <button
-              key={scenario.id}
-              onClick={() => navigate(`/scenario/${scenario.id}`)}
-              className="bg-white rounded-xl shadow-md p-6 text-left hover:shadow-lg transition-all"
-            >
-              <div className="text-4xl mb-2">{scenario.icon}</div>
-              <h2 className="text-xl font-bold text-gray-800 mb-2">{scenario.title}</h2>
-              <p className="text-gray-600">{scenario.description}</p>
-            </button>
-          ))}
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <p className="text-gray-600">Szenarien werden geladen...</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function VocabularyPage({ language }: { language: Language }) {
+  const navigate = useNavigate()
+  const t = translations[language]
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-4">
+      <div className="max-w-4xl mx-auto">
+        <button
+          onClick={() => navigate('/')}
+          className="text-indigo-600 hover:text-indigo-800 mb-4 font-medium"
+        >
+          ← {t.back}
+        </button>
+
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">{t.vocabulary}</h1>
+
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <p className="text-gray-600">Vokabeln werden geladen...</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function GrammarPage({ language }: { language: Language }) {
+  const navigate = useNavigate()
+  const t = translations[language]
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-4">
+      <div className="max-w-4xl mx-auto">
+        <button
+          onClick={() => navigate('/')}
+          className="text-indigo-600 hover:text-indigo-800 mb-4 font-medium"
+        >
+          ← {t.back}
+        </button>
+
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">{t.grammar}</h1>
+
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <p className="text-gray-600">Grammatik wird geladen...</p>
         </div>
       </div>
     </div>
@@ -154,10 +195,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home language={language} />} />
-        <Route path="/scenarios" element={<ScenariosOverview language={language} />} />
-        <Route path="/scenario/:id" element={<ScenarioDetail language={language} />} />
-        <Route path="/vocabulary" element={<Vocabulary language={language} />} />
-        <Route path="/grammar" element={<Grammar language={language} />} />
+        <Route path="/scenarios" element={<ScenariosPage language={language} />} />
+        <Route path="/vocabulary" element={<VocabularyPage language={language} />} />
+        <Route path="/grammar" element={<GrammarPage language={language} />} />
       </Routes>
     </BrowserRouter>
   )
